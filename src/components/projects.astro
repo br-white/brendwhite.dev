@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import svgl from "../../public/sam-vink/svgl.png";
-import stockin from "../../public/sam-vink/stockin.png";
-import moviesfordevs from "../../public/sam-vink/moviesfordevs.png";
+import svgl from "../../public/svgl.png";
+import stockin from "../../public/stockin.png";
+import kadido from "../../public/kadido.png";
+import moviesfordevs from "../../public/moviesfordevs.png";
 
 interface Project {
   title: string;
@@ -32,6 +33,13 @@ const projects: Project[] = [
     image: svgl as ImageMetadata,
     link: "https://coach.com",
     preview: "https://coach.com",
+    status: "On Production",
+  },
+  {
+    title: "KADIDO",
+    image: kadido as ImageMetadata,
+    link: "https://kadido-bsc.netlify.app/",
+    preview: "https://kadido-bsc.netlify.app/",
     status: "On Production",
   },
 ];
