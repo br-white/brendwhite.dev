@@ -1,0 +1,91 @@
+---
+// Work experience data
+const experiences = [
+  {
+    company: "ECI Software Solutions",
+    position: "Senior Full Stack Engineer",
+    duration: "Aug 2020 – Present",
+    description: "Led the development of two high-performance web applications, elevating user engagement by 25% by leveraging React and Angular for frontend and Spring Boot and Node.js for backend, all on AWS.",
+    highlights: [
+      "Designed and developed enterprise-level applications with Microservices architecture",
+      "Successfully upgraded from Java 8 to 17 and migrated React from CRA to Vite",
+      "Automated backend processes and improved deployment workflows with Python scripting",
+      "Delivered robust infrastructure solutions using Terraform for Infrastructure as Code",
+      "Implemented comprehensive testing achieving over 85% coverage",
+      "Optimized Elasticsearch clusters for efficient high-volume data processing",
+      "Leveraged AWS CDK to define cloud resources and enhance infrastructure development"
+    ]
+  },
+  {
+    company: "Gopuff",
+    position: "Senior Full Stack Developer", 
+    duration: "2017 - Jul 2020",
+    description: "Developed and maintained high-volume e-commerce Java application handling over 100,000 transactions daily using React, Next.js for the frontend and Node.js for the backend.",
+    highlights: [
+      "Led a team of developers in designing and implementing REST and GraphQL APIs",
+      "Integrated 3rd party APIs for payment processing ensuring seamless functionality",
+      "Utilized CI/CD pipelines with Jenkins and GitLab reducing release cycles by 50%",
+      "Spearheaded migrating legacy systems to cloud environments (AWS)",
+      "Conducted code reviews and mentored junior developers"
+    ]
+  },
+  {
+    company: "Addition Financial",
+    position: "Java Full Stack Engineer",
+    duration: "2015 - Dec 2016", 
+    description: "Participated in developing enterprise-level web applications based on Microservices design patterns using React, Spring Boot, Spring Framework, and Hibernate.",
+    highlights: [
+      "Integrated AWS API Gateway and other API resources for building scalable systems",
+      "Designed and implemented message services using technologies like Kafka",
+      "Developed a fully responsive platform and migrated an outdated website",
+      "Collaborated closely with cross-functional teams and employed industry best practices"
+    ]
+  }
+];
+---
+
+<section
+  id="experience"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">
+      Professional Journey
+    </h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Work Experience</h3>
+
+    <div class="space-y-8">
+      {experiences.map((exp, index) => (
+        <div
+          class="bg-[#1414149c] rounded-2xl p-8 border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300"
+        >
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+            <div class="flex-1">
+              <h4 class="text-2xl md:text-3xl font-semibold mb-2 text-[var(--sec)]">
+                {exp.position}
+              </h4>
+              <p class="text-xl text-[var(--white)] mb-1">{exp.company}</p>
+              <p class="text-lg text-[var(--white-icon)] mb-4">{exp.duration}</p>
+            </div>
+          </div>
+          
+          <p class="text-[var(--white-icon)] leading-relaxed mb-6">
+            {exp.description}
+          </p>
+          
+          <div class="space-y-3">
+            <h5 class="text-lg font-semibold text-[var(--white)]">Key Achievements:</h5>
+            <ul class="space-y-2">
+              {exp.highlights.map((highlight) => (
+                <li class="flex items-start gap-3 text-[var(--white-icon)]">
+                  <span class="text-[var(--sec)] mt-1 flex-shrink-0">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

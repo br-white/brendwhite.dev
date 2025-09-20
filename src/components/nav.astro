@@ -12,6 +12,11 @@ const navItems: NavItem[] = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21 20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9.48907C3 9.18048 3.14247 8.88917 3.38606 8.69972L11.3861 2.47749C11.7472 2.19663 12.2528 2.19663 12.6139 2.47749L20.6139 8.69972C20.8575 8.88917 21 9.18048 21 9.48907V20ZM19 19V9.97815L12 4.53371L5 9.97815V19H19Z"></path></svg>`,
   },
   {
+    label: "Experience",
+    href: "#experience",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>`,
+  },
+  {
     label: "Education",
     href: "#education",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>`,
@@ -113,7 +118,7 @@ const navItems: NavItem[] = [
       const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
       const easeProgress = 1 - Math.pow(1 - scrollProgress, 4);
 
-      const minWidth = 528;
+      const minWidth = 650;
       const maxWidth = window.innerWidth * 0.8;
       const currentWidth = maxWidth - (maxWidth - minWidth) * easeProgress;
 
@@ -154,19 +159,31 @@ const navItems: NavItem[] = [
   document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("nav a[href^='#']");
-    const observerOptions = { threshold: 0.6 };
+    const observerOptions = {
+      threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+      rootMargin: "-10% 0px -10% 0px",
+    };
 
     const observerCallback = (entries) => {
+      // Find the section that's most visible
+      let mostVisibleEntry = null;
+      let maxRatio = 0;
+
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navLinks.forEach((link) => link.classList.remove("active"));
-          const id = entry.target.getAttribute("id");
-          const activeLink = document.querySelector(`nav a[href="#${id}"]`);
-          if (activeLink) {
-            activeLink.classList.add("active");
-          }
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          mostVisibleEntry = entry;
         }
       });
+
+      if (mostVisibleEntry) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+        const id = mostVisibleEntry.target.getAttribute("id");
+        const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
+      }
     };
 
     const observer = new IntersectionObserver(
@@ -174,6 +191,12 @@ const navItems: NavItem[] = [
       observerOptions
     );
     sections.forEach((section) => observer.observe(section));
+
+    // Set home as active by default
+    const homeLink = document.querySelector('nav a[href="#home"]');
+    if (homeLink && !document.querySelector("nav a.active")) {
+      homeLink.classList.add("active");
+    }
   });
 </script>
 
