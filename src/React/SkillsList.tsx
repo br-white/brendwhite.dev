@@ -1,91 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  Code2,
+  Cloud,
+  Database,
+  TestTube,
+  type LucideIcon,
+} from "lucide-react";
 
-const CategoryIcons = {
-  "Languages & Frameworks": (
-    <svg
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      viewBox="0 0 24 24"
-      height="200px"
-      width="200px"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-    </svg>
-  ),
-  "Full Stack Development": (
-    <svg
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      height="200px"
-      width="200px"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M11.644 1.59a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 0 1 0-1.32l9.75-5.25Z"></path>
-      <path d="m3.265 10.602 7.668 4.129a2.25 2.25 0 0 0 2.134 0l7.668-4.13 1.37.739a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.71 0l-9.75-5.25a.75.75 0 0 1 0-1.32l1.37-.738Z"></path>
-      <path d="m10.933 19.231-7.668-4.13-1.37.739a.75.75 0 0 0 0 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 0 0 0-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 0 1-2.134-.001Z"></path>
-    </svg>
-  ),
-  "Cloud & DevOps": (
-    <svg
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      version="1.1"
-      viewBox="0 0 16 16"
-      height="200px"
-      width="200px"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M13.942 8.039c0.038-0.174 0.058-0.354 0.058-0.539 0-1.381-1.119-2.5-2.5-2.5-0.222 0-0.438 0.029-0.643 0.084-0.387-1.209-1.52-2.084-2.857-2.084-1.365 0-2.516 0.911-2.88 2.159-0.355-0.103-0.731-0.159-1.12-0.159-2.209 0-4 1.791-4 4s1.791 4 4 4h9.5c1.381 0 2.5-1.119 2.5-2.5 0-1.23-0.888-2.252-2.058-2.461zM6.5 12l-2.5-2.5 1-1 1.5 1.5 3.5-3.5 1 1-4.5 4.5z"></path>
-    </svg>
-  ),
-  "Database & Middleware": (
-    <svg
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      viewBox="0 0 24 24"
-      height="200px"
-      width="200px"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-    </svg>
-  ),
-  "Testing & Tools": (
-    <svg
-      className="w-6 h-6 text-[var(--sec)] opacity-70"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      viewBox="0 0 24 24"
-      height="200px"
-      width="200px"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5 12H2v-2h17.5v2zm-17.5-4h17.5v-2H2v2zm0-4h17.5V9H2v2zm0-4h17.5V5H2v2zm0-4h17.5V1H2v2z"></path>
-    </svg>
-  ),
+const CategoryIcons: Record<string, LucideIcon> = {
+  "Languages & Frameworks": Code2,
+  "Cloud & DevOps": Cloud,
+  "Database & Middleware": Database,
+  "Testing & Tools": TestTube,
 };
 
 const SkillsList = () => {
-  const [openItem, setOpenItem] = useState<string | null>(null);
-
   const skills = {
     "Languages & Frameworks": [
-      "JS/TS, Node.js, React, Next.js, Angular",
+      "T3 Stack, Node.js, React, Next.js, Angular, GraphQL",
       "Java, Spring Boot, Spring Framework, Quarkus",
       "Hibernate, JPA for enterprise applications",
-      "T3 Stack specialization (Next.js, TypeScript, tRPC)",
+      ".Net Core, ASP.NET Core, Entity Framework Core",
+      "Blockchain, Solana, Ethereum, DeFi, Web3",
     ],
     "Cloud & DevOps": [
       "AWS (Lambda, EC2, ECS, EKS, ELB, SQS, SNS, SES, Fargate)",
@@ -107,63 +43,50 @@ const SkillsList = () => {
     ],
   };
 
-  const toggleItem = (item: string) => {
-    setOpenItem(openItem === item ? null : item);
-  };
-
   return (
-    <div className="text-left pt-3 md:pt-9">
-      <h3 className="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6">
-        What I do?
+    <div className="text-left pt-3 md:pt-9 max-w-4xl mx-auto">
+      <h3 className="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-8 text-center">
+        My Arsenals 💪
       </h3>
-      <ul className="space-y-4 mt-4 text-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         {Object.entries(skills).map(([category, items]) => (
-          <li key={category} className="w-full">
-            <div
-              onClick={() => toggleItem(category)}
-              className="md:w-[400px] w-full bg-[#1414149c] rounded-2xl text-left hover:bg-opacity-80 transition-all border border-[var(--white-icon-tr)] cursor-pointer overflow-hidden"
-            >
-              <div className="flex items-center gap-3 p-4">
-                {CategoryIcons[category]}
-                <div className="flex items-center gap-2 flex-grow justify-between">
-                  <div className="min-w-0 max-w-[200px] md:max-w-none overflow-hidden">
-                    <span className="block truncate text-[var(--white)] text-lg">
-                      {category}
+          <div
+            key={category}
+            className="bg-gradient-to-br from-[#1414149c] to-[#1a1a1a] rounded-2xl border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-all duration-300 overflow-hidden group hover:shadow-lg hover:shadow-[var(--sec)]/10"
+          >
+            <div className="p-6">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-[var(--sec)] to-[#8b5cf6] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  {React.createElement(CategoryIcons[category], {
+                    className: "w-6 h-6 text-white",
+                    strokeWidth: 2,
+                  })}
+                </div>
+                <h4 className="text-[var(--white)] text-xl font-semibold group-hover:text-[var(--sec)] transition-colors duration-300">
+                  {category}
+                </h4>
+              </div>
+
+              <div className="space-y-3">
+                {items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 p-3 rounded-lg bg-[#0a0a0a]/50 hover:bg-[#1a1a1a]/70 transition-all duration-200 group/item"
+                  >
+                    <div className="w-2 h-2 bg-[var(--sec)] rounded-full mt-2 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></div>
+                    <span className="text-[var(--white-icon)] text-sm leading-relaxed group-hover/item:text-[var(--white)] transition-colors duration-200">
+                      {item}
                     </span>
                   </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className={`w-6 h-6 text-[var(--white)] transform transition-transform flex-shrink-0 ${
-                      openItem === category ? "rotate-180" : ""
-                    }`}
-                  >
-                    <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
-                  </svg>
-                </div>
-              </div>
-
-              <div
-                className={`transition-all duration-300 px-4 ${
-                  openItem === category
-                    ? "max-h-[500px] pb-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <ul className="space-y-2 text-[var(--white-icon)] text-sm">
-                  {items.map((item, index) => (
-                    <div key={index} className="flex items-center">
-                      <span className="pl-1">•</span>
-                      <li className="pl-3">{item}</li>
-                    </div>
-                  ))}
-                </ul>
+                ))}
               </div>
             </div>
-          </li>
+
+            {/* Decorative gradient overlay */}
+            <div className="h-1 bg-gradient-to-r from-[var(--sec)] via-[#8b5cf6] to-[var(--sec)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
