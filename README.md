@@ -4,7 +4,7 @@
 
 ---
 
-[Demo](https://Samuelhernandez.vercel.app/)
+[Demo](https://brendanwhite.dev/)
 
 [Astro Themes](https://astro.build/themes/details/dark-minimal/)
 
@@ -57,7 +57,7 @@ src/
 1. Clone the repo:
 
 ```
-git clone https://github.com/toptal126/portfolio
+git clone https://github.com/toptal126/brendanwhite.dev
 ```
 
 2. Install dependencies:
@@ -75,4 +75,4 @@ npm run dev
 > **Important Notice:**  
 > This project is licensed under the [MIT License](https://opensource.org/licenses/mit).  
 > According to the license terms, any redistribution (including compiled or modified versions), you **must** retain the original copyright
-> notice and the full license text. Copyright © 2025 Samuel Vink. All rights reserved.
+> notice and the full license text. Copyright © 2025 Brendan White. All rights reserved.
