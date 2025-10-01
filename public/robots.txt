@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://brendanwhite.dev/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to sensitive files
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /*.json$
+Disallow: /*.mjs$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /*.js$
+Disallow: /*.jsx$
+Disallow: /*.astro$
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /og.image.png
+Allow: /apple-touch-icon.png
+Allow: /android-chrome-*.png
+Allow: /site.webmanifest
