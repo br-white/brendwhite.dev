@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, updateDoc, increment } from "firebase/firestore";
-import { db } from "../firebase";
 import { Heart } from "lucide-react";
 
 const LikeButton = () => {
@@ -9,7 +7,6 @@ const LikeButton = () => {
   const [isClient, setIsClient] = useState(false);
   const [triggerAnimation, setTriggerAnimation] = useState(false);
   const [animateLikes, setAnimateLikes] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -19,20 +16,46 @@ const LikeButton = () => {
       setIsLiked(storedIsLiked === "true");
     }
 
-    // Listen for realtime updates from Firestore
-    const likeDocRef = doc(db, "likes", "counter");
-    const unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const currentLikes = docSnap.data().likes;
-        setLikes(Math.max(0, currentLikes));
-        setAnimateLikes(true);
-        setTimeout(() => setAnimateLikes(false), 300);
-      } else {
-        console.log("Document does not exist.");
-      }
-    });
+    // Calculate likes as 650 + number of days from Jan 1, 2026
+    const calculateLikes = () => {
+      const baseDate = new Date("2026-01-01T00:00:00Z");
+      const today = new Date();
+      const diffTime = today.getTime() - baseDate.getTime();
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      return 650 + Math.max(0, diffDays);
+    };
 
-    return () => unsubscribe();
+    const updateLikes = () => {
+      const calculatedLikes = calculateLikes();
+      setLikes(calculatedLikes);
+      setAnimateLikes(true);
+      setTimeout(() => setAnimateLikes(false), 300);
+    };
+
+    // Set initial likes
+    updateLikes();
+
+    // Update likes at midnight to reflect new day
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    const msUntilMidnight = tomorrow.getTime() - now.getTime();
+
+    let intervalId: NodeJS.Timeout | null = null;
+
+    const timeoutId = setTimeout(() => {
+      updateLikes();
+      // Update every 24 hours
+      intervalId = setInterval(updateLikes, 24 * 60 * 60 * 1000);
+    }, msUntilMidnight);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, []);
 
   const triggerLikeAnimation = () => {
@@ -42,28 +65,16 @@ const LikeButton = () => {
     }, 300);
   };
 
-  const handleLike = async () => {
-    if (isProcessing) return;
-
+  const handleLike = () => {
     if (isLiked) {
       triggerLikeAnimation();
       return;
     }
 
-    try {
-      setIsProcessing(true);
-      const likeDocRef = doc(db, "likes", "counter");
-      await updateDoc(likeDocRef, {
-        likes: increment(1),
-      });
-      setIsLiked(true);
-      localStorage.setItem("websiteIsLiked", "true");
-      triggerLikeAnimation();
-    } catch (error) {
-      console.error("Error updating likes:", error);
-    } finally {
-      setIsProcessing(false);
-    }
+    // Just update local state, likes are calculated from date
+    setIsLiked(true);
+    localStorage.setItem("websiteIsLiked", "true");
+    triggerLikeAnimation();
   };
 
   if (!isClient) return null;
@@ -82,7 +93,6 @@ const LikeButton = () => {
     <div className="flex items-center">
       <button
         onClick={handleLike}
-        disabled={isProcessing}
         className={`
           group relative w-40 h-10 flex items-center justify-center p-3
           rounded-full transition-all duration-300 ease-in-out transform border-2 ${borderColorClass}
