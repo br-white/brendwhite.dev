@@ -2,43 +2,103 @@
 // Work experience data
 const experiences = [
   {
-    company: "ECI Software Solutions",
-    position: "Senior Full Stack Engineer",
-    duration: "Aug 2020 – Present",
-    description: "Led the development of two high-performance web applications, elevating user engagement by 25% by leveraging React and Angular for frontend and Spring Boot and Node.js for backend, all on AWS.",
+    company: "OXYgean",
+    location: "Dubai, UAE (Remote)",
+    position: "Tech Lead",
+    duration: "Oct 2025 – Present",
+    description: "Architected and led the development of cloud-native, event-driven backend services using Python/Scala and Kafka, supporting high-throughput data ingestion and processing for critical analytics and operational workflows.",
     highlights: [
-      "Designed and developed enterprise-level applications with Microservices architecture",
-      "Successfully upgraded from Java 8 to 17 and migrated React from CRA to Vite",
-      "Automated backend processes and improved deployment workflows with Python scripting",
-      "Delivered robust infrastructure solutions using Terraform for Infrastructure as Code",
-      "Implemented comprehensive testing achieving over 85% coverage",
-      "Optimized Elasticsearch clusters for efficient high-volume data processing",
-      "Leveraged AWS CDK to define cloud resources and enhance infrastructure development"
+      "Established comprehensive platform standards for reliability and operability, including service templates, centralized logging/metrics/tracing, SLOs, and runbooks, fostering a healthy production culture",
+      "Led Kubernetes-based production deployments and refined release practices using GitOps-style workflows and CI/CD automation (GitHub Actions), improving deployment consistency and speed",
+      "Implemented Infrastructure as Code with Terraform for repeatable, secure provisioning of cloud resources (AWS), enforcing least-privilege access controls and secrets management",
+      "Designed data modeling and transformation patterns using dbt and modern data warehouse/lakehouse architectures, incorporating built-in data quality checks to increase trust in outputs",
+      "Drove performance and cost optimization across data pipelines and APIs through query tuning, partitioning strategies, caching, and autoscaling policies, reducing operational costs by ~20%",
+      "Mentored and unblocked engineers through design reviews, pairing, and technical documentation, raising overall engineering quality and collaboration",
+      "Developed and maintained effective logging and debugging practices for both server-side and distributed systems, significantly reducing mean time to resolution (MTTR)"
     ]
   },
   {
-    company: "Gopuff",
-    position: "Senior Full Stack Developer", 
-    duration: "2017 - Jul 2020",
-    description: "Developed and maintained high-volume e-commerce Java application handling over 100,000 transactions daily using React, Next.js for the frontend and Node.js for the backend.",
+    company: "WP Engine",
+    location: "Austin, TX (Remote)",
+    position: "Senior Data Engineer",
+    duration: "Jan 2023 – Oct 2025",
+    description: "Led a large-scale dbt refactoring and optimization initiative, improving data reliability, reducing technical debt, and accelerating analytics delivery by 35% for cross-functional teams.",
     highlights: [
-      "Led a team of developers in designing and implementing REST and GraphQL APIs",
-      "Integrated 3rd party APIs for payment processing ensuring seamless functionality",
-      "Utilized CI/CD pipelines with Jenkins and GitLab reducing release cycles by 50%",
-      "Spearheaded migrating legacy systems to cloud environments (AWS)",
-      "Conducted code reviews and mentored junior developers"
+      "Designed, built, and migrated legacy ETL pipelines from Fivetran/Stitch to custom Python-based data pipelines, reducing costs by 40% while increasing performance, flexibility, and maintainability",
+      "Developed and maintained scalable data pipelines integrated with Ruby on Rails applications, enabling reliable, real-time data ingestion for business-critical systems",
+      "Deployed and operated production data workloads on GCP using Kubernetes and Docker, ensuring high availability, scalability, and fault tolerance for enterprise clients",
+      "Automated cloud infrastructure provisioning using Terraform, standardizing development and production environments and improving deployment consistency by 60%",
+      "Implemented robust data quality monitoring and observability with Monte Carlo, proactively detecting anomalies and improving data trustworthiness for stakeholders",
+      "Designed and implemented a custom AI agent leveraging LLMs to augment internal data and engineering workflows, improving developer productivity by 25% and accelerating troubleshooting",
+      "Integrated incident management and alerting with PagerDuty and Slack, improving on-call efficiency and embodying a sane, balanced on-call culture",
+      "Coached engineers through weekly technical talks, mentoring team members on modern data engineering best practices, system design, and tooling"
     ]
   },
   {
-    company: "Addition Financial",
-    position: "Java Full Stack Engineer",
-    duration: "2015 - Dec 2016", 
-    description: "Participated in developing enterprise-level web applications based on Microservices design patterns using React, Spring Boot, Spring Framework, and Hibernate.",
+    company: "Tunnl Exchange",
+    location: "Miami, FL (Remote)",
+    position: "Full Stack Engineer",
+    duration: "Oct 2023 – May 2025",
+    description: "Contributed to the design and development of a hybrid CEX/DEX trading platform, combining off-chain performance with on-chain settlement for secure and scalable digital asset trading.",
     highlights: [
-      "Integrated AWS API Gateway and other API resources for building scalable systems",
-      "Designed and implemented message services using technologies like Kafka",
-      "Developed a fully responsive platform and migrated an outdated website",
-      "Collaborated closely with cross-functional teams and employed industry best practices"
+      "Implemented an off-chain order book and microservices-based matching engine in Python, enabling low-latency trade execution while maintaining blockchain transparency",
+      "Built cross-chain and fiat on/off-ramp functionality by integrating Circle payment services, enabling seamless asset bridging and fiat-to-crypto transactions",
+      "Integrated decentralized liquidity and protocol interactions including Uniswap, ParaSwap, and Sablier, supporting token swaps, streaming payments, and optimized liquidity routing",
+      "Developed ERC-20 token deposit and withdrawal workflows, supporting both on-chain deposits and card-based (credit/debit) funding for a seamless user experience",
+      "Designed and implemented event-driven microservices for blockchain log ingestion, transaction tracking, and settlement reconciliation using Kafka",
+      "Deployed and operated backend services on AWS (EC2, Lambda, EKS), leveraging containerization (Docker) and serverless architectures for optimal scalability and cost efficiency",
+      "Wrote efficient tests and established tight feedback loops for both frontend components and backend services, ensuring code quality and reliability"
+    ]
+  },
+  {
+    company: "Hashcash Consultants",
+    location: "Palo Alto, CA (Remote)",
+    position: "Backend Engineer",
+    duration: "Feb 2020 – Dec 2022",
+    description: "Developed and maintained blockchain data ingestion pipelines using Python, Web3.py, and Ethereum JSON-RPC, enabling near real-time extraction of on-chain transactions and smart contract events.",
+    highlights: [
+      "Built scalable ETL pipelines with Apache Airflow, dbt, and PySpark, transforming raw blockchain data into structured, analytics-ready datasets for Web3 platforms",
+      "Optimized real-time on-chain data streaming using Kafka and AWS Kinesis, supporting low-latency processing for analytics and monitoring applications",
+      "Designed and implemented high-performance data partitioning and storage strategies in Snowflake and Delta Lake, reducing query latency by ~50% on large datasets",
+      "Engineered on-chain data indexing and query layers, leveraging BigQuery Ethereum datasets and custom GraphQL APIs for efficient data access and exploration",
+      "Built backend data services and models powering AI-driven dashboards and predictive analytics for blockchain trends, token flows, and network activity",
+      "Automated CI/CD pipelines for data platforms using Terraform, CloudFormation, Docker, and Kubernetes, improving deployment speed, consistency, and reliability",
+      "Deployed and operated containerized data services across hybrid cloud environments (AWS, GCP, Azure), ensuring scalability and high availability",
+      "Designed and optimized large-scale blockchain data pipelines using Azure Data Factory, Databricks, and Apache Spark for distributed processing"
+    ]
+  },
+  {
+    company: "Optum",
+    location: "Eden Prairie, MN (Remote)",
+    position: "Backend Engineer",
+    duration: "Dec 2016 – Jan 2020",
+    description: "Engineered and maintained backend data pipelines to ingest, transform, and store healthcare operational and performance data, supporting automated enterprise workflows.",
+    highlights: [
+      "Designed and optimized backend data models, schemas, and fact tables in SQL databases to ensure efficient storage, query performance, and long-term system scalability",
+      "Built backend data services and APIs delivering near–real-time datasets for internal healthcare platforms and downstream system integrations",
+      "Developed SQL- and Python-based backend processing services to support automated healthcare reporting, analytics, and operational workflows",
+      "Implemented reliable backend pipelines to process program performance, experimentation, and operational metrics, ensuring data accuracy, traceability, and consistency",
+      "Automated end-to-end backend workflows using Zoho Flow, Zoho Creator, and n8n, integrating healthcare operational systems securely and efficiently",
+      "Reduced manual operational effort by 43% through backend automation, data validation, orchestration, and standardized processing pipelines",
+      "Deployed and orchestrated backend ETL services using Apache Airflow and AWS Lambda, enabling scalable, fault-tolerant data processing",
+      "Implemented CI/CD pipelines for backend services using GitHub Actions, Jenkins, and Docker, improving deployment reliability while maintaining compliance standards"
+    ]
+  },
+  {
+    company: "Zappos",
+    location: "Las Vegas, NV",
+    position: "Backend Engineer",
+    duration: "May 2013 – Dec 2016",
+    description: "Engineered and maintained backend data ingestion and transformation pipelines from OLTP/OLAP databases, SQL sources, and Salesforce, ensuring data consistency and integrity across e-commerce systems.",
+    highlights: [
+      "Implemented backend data processing and analytics logic to identify purchasing patterns and sales trends, improving conversion workflows by 12%",
+      "Developed backend forecasting and demand-processing pipelines supporting sales, churn analysis, and inventory planning, reducing stockouts by 17%",
+      "Exposed curated datasets through backend APIs and data access layers, enabling internal tools, reporting platforms, and operational decision-making",
+      "Automated backend reporting and data refresh workflows, delivering timely and reliable datasets for leadership and operational teams",
+      "Enabled customer lifecycle and retention systems by building backend data integrations supporting segmentation and personalization, contributing to a 23% increase in customer retention",
+      "Collaborated closely with cross-functional marketing, finance, operations, and customer success teams to design backend data solutions aligned with core e-commerce business workflows",
+      "Developed solid fundamentals in database design, SQL query optimization, and backend service architecture to support high-volume e-commerce transactions",
+      "Gained extensive experience in shipping features rapidly within a fast-paced, customer-centric Agile environment"
     ]
   }
 ];
@@ -65,6 +125,9 @@ const experiences = [
                 {exp.position}
               </h4>
               <p class="text-xl text-[var(--white)] mb-1">{exp.company}</p>
+              {exp.location && (
+                <p class="text-lg text-[var(--white-icon)] mb-1">{exp.location}</p>
+              )}
               <p class="text-lg text-[var(--white-icon)] mb-4">{exp.duration}</p>
             </div>
           </div>
